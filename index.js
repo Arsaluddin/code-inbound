@@ -5,6 +5,7 @@ dotenv.config()
 const { Client } = require('pg')
 const typeorm = require('typeorm');
 const userRoutes = require('./routes/userRouter');
+const authRoutes = require('./routes/authRouter');
 const errorHandler = require('./middleware/errorHandling');
 const Users = require('./entities/User');
 
@@ -41,6 +42,7 @@ typeorm.createConnection({
   
       // Set up routes
       app.use('/users', userRoutes);
+      app.use('/auth',authRoutes);
       app.use(errorHandler);
   
       // Start the Express server
